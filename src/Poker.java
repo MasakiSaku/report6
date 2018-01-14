@@ -9,6 +9,8 @@ public class Poker {
         System.out.println("ポーカーを開始します。");
         System.out.println("あなたの手札は・・・");
         pick_up(mark, number);
+        System.out.println("並び変えると");
+        sort (mark, number);
     }
 
     public static void pick_up (int[] mark, int[] number){
@@ -37,6 +39,7 @@ public class Poker {
                         mark[i] = ram_mk;
                         number[i] = ram_num;
                         count = 0;
+
                     }else{
                         count++;
                     }
@@ -67,5 +70,34 @@ public class Poker {
             }
             System.out.println( mk  + ' ' + number[i]);
         }
+    }
+
+    public static void sort(int[] mark, int[] number){
+        /*
+            バブルソートを使い、引いたカードを小さい順に並べる。
+         */
+        int chan_num;
+        int chan_mark;
+
+        for (int i = 0; i<4; i++){
+            int j = 4;
+
+            for (int k=j-1; k>=i; k--){
+
+                if (number[j] < number[k]){
+                    chan_num  = number[j];
+                    chan_mark = mark[j];
+                    number[j] = number[k];
+                    mark[j]   = mark[k];
+                    number[k] = chan_num;
+                    mark[k]   = chan_mark;
+                    j--;
+
+                }else{
+                    j--;
+                }
+            }
+        }
+        print(mark, number);
     }
 }
