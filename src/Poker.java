@@ -9,11 +9,10 @@ public class Poker {
         System.out.println("ポーカーを開始します。");
         System.out.println("あなたの手札は・・・");
         pick_up(mark, number);
-        System.out.println("並び変えると");
         sort (mark, number);
 
         poker_hand jd = new poker_hand();
-        jd.judge(number);
+        jd.judge(mark,number);
     }
 
     public static void pick_up (int[] mark, int[] number){
@@ -49,7 +48,6 @@ public class Poker {
                 }
             }
         }
-        print (mark, number);
     }
 
     public static void print(int[] mark, int[] number){

@@ -62,27 +62,107 @@ public class poker_hand {
         return judge;
     }
 
+    public boolean straight(int[] number){
+        /*
+            ストレートの時、trueを返す
+         */
+        boolean judge = false;
+        int fst_num = number[0];
 
-    public void judge(int[] number){
+        if(number[1] == fst_num+1 && number[2] == fst_num+2 && number[3] == fst_num+3 && number[4] == fst_num+4){
+            judge = true;
+        }else if (fst_num == 1 && number[1] == 10 && number[2] == 11 && number[3] ==12 && number[4] == 13){
+            //この場合もストレート
+            judge = true;
+        }
+        return judge;
+    }
+
+    public boolean flush(int[] mark){
+        /*
+            フラッシュの時、trueを返す
+         */
+        boolean judge = false;
+        if(mark[0] == mark[1] && mark[1] == mark[2] && mark[2]==mark[3] && mark[3] == mark[4]){
+            judge = true;
+        }
+
+        return judge;
+    }
+
+    public boolean full_house(int[] number){
+        /*
+            フルハウスの時、trueを返す
+         */
+        boolean judge = false;
+
+        if (number[0]==number[1] && number[1]==number[2] && number[3]==number[4]){
+            judge = true;
+
+        }else if (number[0]==number[1] && number[2]==number[3] && number[3]==number[4] ){
+            judge = true;
+        }
+        return judge;
+    }
+
+    public boolean straight_flush(int[] mark,int[] number){
+        /*
+            ストレートフラッシュの時、trueを返す
+         */
+        boolean judge = false;
+
+        if (flush(mark) && straight(number)){
+            judge = true;
+        }
+        return judge;
+    }
+
+    public boolean royal_straight_flush(int[] mark, int[] number){
+        /*
+            ロイヤルストレートフラッシュの時、trueを返す
+         */
+        boolean judge = false;
+
+        if(number[0] == 1 && number[1] == 10 && number [2] == 11 && number [3] == 12 && number[4] == 13 && flush(mark)){
+            judge = true;
+        }
+        return judge;
+    }
+
+
+    public void judge(int[] mark,int[] number){
         /*
             役を判定する
          */
+        if(royal_straight_flush(mark,number)){
+            System.out.println("Royal Straight Flush");
 
-        if(four_card(number) == true){
-            System.out.println("Four card!");
+        }else if(straight_flush(mark,number)){
+            System.out.println("Straight Flush");
 
-        }else if(three_card(number) == true){
-            System.out.println("Three card!");
+        }else if(full_house(number)){
+            System.out.println("Full House");
 
-        }else if (two_pair(number) ==true){
-            System.out.println("Two pair!");
+        }else if(flush(mark)){
+            System.out.println("Flush");
 
-        }else if (one_pair(number) == true) {
-            System.out.println("One pair!");
+        }else if(straight(number)){
+            System.out.println("Straight");
+
+        }else if(four_card(number)){
+            System.out.println("Four card");
+
+        }else if(three_card(number)){
+            System.out.println("Three card");
+
+        }else if (two_pair(number)){
+            System.out.println("Two pair");
+
+        }else if (one_pair(number)) {
+            System.out.println("One pair");
 
         }else {
-            System.out.println("ハイカードです");
-
+            System.out.println("ハイカード");
         }
     }
 }
