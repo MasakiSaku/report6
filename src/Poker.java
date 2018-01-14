@@ -11,6 +11,9 @@ public class Poker {
         pick_up(mark, number);
         System.out.println("並び変えると");
         sort (mark, number);
+
+        poker_hand jd = new poker_hand();
+        jd.judge(number);
     }
 
     public static void pick_up (int[] mark, int[] number){
