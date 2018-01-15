@@ -1,7 +1,7 @@
 public class poker_hand {
 
 
-    public boolean one_pair(int[] number){
+    public static boolean one_pair(int[] number){
         /*
             ワンペアの時、trueを返す
          */
@@ -16,7 +16,7 @@ public class poker_hand {
         return judge;
     }
 
-    public boolean two_pair(int[] number){
+    public static boolean two_pair(int[] number){
         /*
             ツーペアの時、trueを返す
          */
@@ -32,7 +32,7 @@ public class poker_hand {
         return judge;
     }
 
-    public boolean three_card(int[] number){
+    public static boolean three_card(int[] number){
         /*
             スリーカードの時、trueを返す
          */
@@ -48,7 +48,7 @@ public class poker_hand {
         return judge;
     }
 
-    public boolean four_card(int[] number){
+    public static boolean four_card(int[] number){
         /*
             フォーカードの時、trueを返す
          */
@@ -62,7 +62,7 @@ public class poker_hand {
         return judge;
     }
 
-    public boolean straight(int[] number){
+    public static boolean straight(int[] number){
         /*
             ストレートの時、trueを返す
          */
@@ -78,7 +78,7 @@ public class poker_hand {
         return judge;
     }
 
-    public boolean flush(int[] mark){
+    public static boolean flush(int[] mark){
         /*
             フラッシュの時、trueを返す
          */
@@ -90,7 +90,7 @@ public class poker_hand {
         return judge;
     }
 
-    public boolean full_house(int[] number){
+    public static boolean full_house(int[] number){
         /*
             フルハウスの時、trueを返す
          */
@@ -105,7 +105,7 @@ public class poker_hand {
         return judge;
     }
 
-    public boolean straight_flush(int[] mark,int[] number){
+    public static boolean straight_flush(int[] mark,int[] number){
         /*
             ストレートフラッシュの時、trueを返す
          */
@@ -117,7 +117,7 @@ public class poker_hand {
         return judge;
     }
 
-    public boolean royal_straight_flush(int[] mark, int[] number){
+    public static boolean royal_straight_flush(int[] mark, int[] number){
         /*
             ロイヤルストレートフラッシュの時、trueを返す
          */
@@ -130,39 +130,42 @@ public class poker_hand {
     }
 
 
-    public void judge(int[] mark,int[] number){
+    public static String judge(int[] mark,int[] number){
         /*
             役を判定する
          */
+        String result;
+
         if(royal_straight_flush(mark,number)){
-            System.out.println("Royal Straight Flush");
+            result = "Royal Straight Flush";
 
         }else if(straight_flush(mark,number)){
-            System.out.println("Straight Flush");
+            result = "Straight Flush";
 
         }else if(full_house(number)){
-            System.out.println("Full House");
+            result ="Full House";
 
         }else if(flush(mark)){
-            System.out.println("Flush");
+            result = "Flush";
 
         }else if(straight(number)){
-            System.out.println("Straight");
+            result = "Straight";
 
         }else if(four_card(number)){
-            System.out.println("Four card");
+            result = "Four card";
 
         }else if(three_card(number)){
-            System.out.println("Three card");
+            result = "Three card";
 
         }else if (two_pair(number)){
-            System.out.println("Two pair");
+            result = "Two pair";
 
         }else if (one_pair(number)) {
-            System.out.println("One pair");
+            result = "One pair";
 
         }else {
-            System.out.println("ハイカード");
+            result = "ハイカード";
         }
+        return result;
     }
 }

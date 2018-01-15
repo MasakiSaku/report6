@@ -12,7 +12,7 @@ public class Poker {
         sort (mark, number);
 
         poker_hand jd = new poker_hand();
-        jd.judge(mark,number);
+        System.out.println(jd.judge(mark,number));
     }
 
     public static void pick_up (int[] mark, int[] number){
